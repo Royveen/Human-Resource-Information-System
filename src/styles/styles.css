@@ -1,0 +1,172 @@
+html {
+    overflow-x: hidden;
+    height: 100%;
+}
+
+body {
+    font-family: 'Open Sans';
+    height: 100%;
+}
+
+main {
+    padding: 30px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.dropdown {
+    cursor: pointer;
+}
+
+.loading {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background: #000;
+    opacity: 0.4;
+    z-index: 999;
+    background: #000 url(http://code.jquery.com/mobile/1.3.1/images/ajax-loader.gif) no-repeat 50% 50%;
+}
+
+.loading-no-back {
+    height: 180px;
+    width: 100%;
+    background: url('spin.gif') no-repeat 50% 50%;
+}
+
+.card-image {
+    width: 50px;
+    height: 50px;
+}
+
+.flex {
+    display: flex;
+}
+
+.just-space-bet {
+    justify-content: space-between;
+}
+
+
+/* Ensure display:flex and others don't override a [hidden] */
+
+
+/*Dashboard*/
+
+
+/*
+ * Base structure
+ */
+
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+
+body {
+    padding-top: 50px;
+}
+
+
+/*
+ * Typography
+ */
+
+h1 {
+    margin-bottom: 20px;
+    padding-bottom: 9px;
+    border-bottom: 1px solid #eee;
+}
+
+
+/*
+ * Sidebar
+ */
+
+.sidebar {
+    position: fixed;
+    top: 51px;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    /* Scrollable contents if viewport is shorter than content. */
+    border-right: 1px solid #eee;
+}
+
+
+/* Sidebar navigation */
+
+.sidebar {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.sidebar .nav {
+    margin-bottom: 20px;
+}
+
+.sidebar .nav-item {
+    width: 100%;
+}
+
+.sidebar .nav-item+.nav-item {
+    margin-left: 0;
+}
+
+.sidebar .nav-link {
+    border-radius: 0;
+}
+
+
+/*
+ * Dashboard
+ */
+
+
+/* Placeholders */
+
+.placeholders {
+    padding-bottom: 3rem;
+}
+
+.placeholder img {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+
+.mr-auto {
+    margin-right: auto !important;
+}
+
+footer {
+    position: fixed;
+    bottom: 0px;
+    border-top: 2px solid #ccc;
+    width: 100%;
+    background: #ccc;
+    color: #000;
+}
+
+.nav-item {
+    border-right: 1px solid #fff;
+}
+
+.nav-item:last-child {
+    border-right: 0px solid #fff;
+}
+
+@media(min-width:600px) {
+    #navbarDefault {
+        margin-left: 11rem;
+    }
+    .submit-button-box {
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+    }
+}
+
+#editForm {
+    margin: 30px;
+}

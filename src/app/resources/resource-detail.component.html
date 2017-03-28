@@ -1,0 +1,17 @@
+<div *ngIf="resource">
+    <div class="row">
+        <div class="col-md-1">
+            <img src="images/{{resource.gender | lowercase}}.png" class="card-image" />
+        </div>
+        <div class="col-md-11">
+            <h4>
+                {{ resource.firstName | capitalize }} {{ resource.lastName | capitalize }}&nbsp;
+            </h4>
+            <br /> {{ resource.address }}
+            <br /> {{ resource.city }}, {{ resource.state.name }}
+        </div>
+    </div>
+</div>
+<div *ngIf="!resource" class="row">
+    No resource found
+</div>

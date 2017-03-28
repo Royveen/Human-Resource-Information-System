@@ -1,0 +1,23 @@
+<!-- Things like #firstName="ngForm" will change to #firstName="ngModel" after RC2 -->
+<div class="row">
+
+    <div class="col-md-12">
+        <div class="alert alert-danger" *ngIf="message != null">{{ message }}</div>
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" href="#personal-form" role="tab" data-toggle="tab">Personal</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#work-form" role="tab" data-toggle="tab">Work</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#seperation-form" role="tab" data-toggle="tab">Seperation</a>
+            </li>
+        </ul>
+
+        <form (ngSubmit)="onSubmit()" #resourceForm="ngForm" id="editForm" novalidate>
+            <personal-form-container></personal-form-container>
+
+        </form>
+    </div>
+</div>

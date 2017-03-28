@@ -1,0 +1,65 @@
+<div class="resources view indent">
+    <div class="container">
+        <header>
+            <h3>
+                <!--<span class="glyphicon glyphicon-user"></span> {{ title }}-->
+            </h3>
+        </header>
+        <br />
+        <div class="row">
+            <div class="col-md-10">
+                <!--<div class="navbar">
+                    <ul class="nav navbar-nav">
+                        <li class="toolbar-item">
+                            <a (click)="changeDisplayMode(displayModeEnum.Card)" [class.active]="displayMode === displayModeEnum.Card">
+                                <span class="glyphicon glyphicon-th-large"></span> Card View
+                            </a>
+                        </li>
+                        <li class="toolbar-item">
+                            <a (click)="changeDisplayMode(displayModeEnum.Grid)" [class.active]="displayMode === displayModeEnum.Grid">
+                                <span class="glyphicon glyphicon-align-justify"></span> List View
+                            </a>
+                        </li>
+                    </ul>
+                </div>-->
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row card-container">
+                <div class="col-sm-6 col-md-4 col-lg-3 mb-5" *ngFor="let resource of resources;">
+                    <div class="card">
+                        <div class="card-header ">
+                            <a routerLink="{{resource._id}}/details" class=" white pull-left ">
+                        {{resource.firstName | capitalize }} {{ resource.lastName | capitalize }} 
+                    </a>
+                            <a routerLink="{{resource._id}}/edit" class="pull-right">
+                                <i title="Edit" class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                <!--<i title="Edit" class="pull-right glyphicon glyphicon-edit edit-icon white "></i>-->
+                            </a>
+                        </div>
+                        <div class="card-block ">
+                            <div class="clearfix row">
+                                <div class="col-md-2 card-body-left ">
+                                    <a href="# " class="white ">
+                                        <img src="images/{{resource.gender | lowercase}}.png " class="card-image " />
+                                    </a>
+                                </div>
+                                <div class="col-md-8 offset-md-2 card-body-right ">
+                                    <div class="card-body-content ">
+                                        <span>{{resource.city | trim }},</span>
+                                        <p>{{resource.state.name}}</p>
+                                    </div>
+                                    <a routerLink="{{resource._id}}/details">view details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf=" !resources.length ">
+                    No Records Found
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
