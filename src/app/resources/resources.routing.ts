@@ -4,6 +4,8 @@ import { IRouting } from '../shared/interfaces';
 import {ResourceComponent} from './resource.component'
 import {ResourceDetailComponent} from './resources-detail.component'
 import {ResourceEditComponent} from './resource-edit.component'
+import {PersonalComponent} from './personal.form.component'
+import {WorkComponent} from './work.form.component'
 export var resourcesRoutes: Routes = [
   { path: 'resources', component: ResourcesComponent},
   { path: 'resources/:id', component: ResourceComponent,children:[
@@ -15,5 +17,5 @@ export var resourcesRoutes: Routes = [
 
 export const resourcesRouting: IRouting = {
   routes: RouterModule.forChild(resourcesRoutes),
-  components:[ResourcesComponent,ResourceComponent,ResourceDetailComponent,ResourceEditComponent]
+  components:[ResourcesComponent,ResourceComponent,ResourceDetailComponent,ResourceEditComponent,PersonalComponent,WorkComponent]
 }
