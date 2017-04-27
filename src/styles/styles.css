@@ -170,3 +170,61 @@ footer {
 .editForm {
     margin: 30px;
 }
+
+#dashboard .card-green {
+    border-color: #5cb85c;
+    color: white;
+}
+
+#dashboard .card-green .card-header {
+    background: #5cb85c;
+    border-color: #5cb85c;
+    color: white;
+}
+
+#dashboard .card-green .card-block {
+    background: #eee;
+    color: #5cb85c;
+}
+
+#dashboard .card-primary .card-header {
+    border-color: #337ab7;
+    color: white;
+}
+
+#dashboard .card-primary .card-block {
+    background: #eee;
+    color: #337ab7;
+}
+
+#dashboard .card-yellow {
+    border-color: #f0ad4e;
+    color: white;
+}
+
+#dashboard .card-yellow .card-header {
+    background: #f0ad4e;
+    border-color: #f0ad4e;
+    color: white;
+}
+
+#dashboard .card-yellow .card-block {
+    background: #eee;
+    color: #f0ad4e;
+}
+
+#dashboard .card-red {
+    border-color: #d9534f;
+    color: white;
+}
+
+#dashboard .card-red .card-header {
+    background: #d9534f;
+    border-color: #d9534f;
+    color: white;
+}
+
+#dashboard .card-red .card-block {
+    background: #eee;
+    color: #d9534f;
+}
