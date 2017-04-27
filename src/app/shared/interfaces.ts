@@ -31,6 +31,9 @@ export interface IResource {
     user_access:string;
 }
 
+export interface IResourcePersonal {
+    
+}
 export interface IProject {
     client_id:string;
     assignment_start_date:string;

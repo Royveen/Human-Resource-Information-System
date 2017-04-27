@@ -13,11 +13,11 @@ var loader_component_1 = require("./loader.component");
 var navbar_component_1 = require("./navbar/navbar.component");
 var dashboard_module_1 = require("./dashboard/dashboard.module");
 var login_module_1 = require("./login/login.module");
-// import { ResourcesModule } from './resources/resources.module';
 var add_module_1 = require("./addresource/add.module");
 var app_routing_1 = require("./app.routing");
 var core_module_1 = require("./core/core.module");
 var shared_module_1 = require("./shared/shared.module");
+// import { CNgbRootModule }   from './bootstrap_modules/bootstrap.module';
 var AppModule = (function () {
     function AppModule() {
     }

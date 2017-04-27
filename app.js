@@ -11,6 +11,7 @@ var index = require('./routes/index');
 var mongoose = require('mongoose');
 var monk = require('monk');
 var helmet = require('helmet');
+mongoose.Promise = require('bluebird');
 mongoose.connect('mongodb://127.0.0.1:27017/employee');
 var app = express();
 
@@ -26,7 +27,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use('/node_modules', express.static(__dirname + '/node_modules'));
 app.use(express.static(path.join(__dirname, 'src')));
-
+app.use(function noCache(req, res, next) {
+    res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+    res.header("Pragma", "no-cache");
+    res.header("Expires", 0);
+    next();
+});
 app.use(function(req, res, next) {
     req.db = mongoose;
     next();

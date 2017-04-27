@@ -1,1 +1,60 @@
-Work
+<form (ngSubmit)="onSubmit()" #workForm="ngForm" class="workForm editForm" novalidate>
+    <div class="row">
+        <div class="col-md-6">
+            <!-- Text input-->
+            <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="fn">Date of joining</label>
+                <div class="col-md-7">
+                    <my-date-picker name="date_of_joining" [options]="myDatePickerOptions" [(ngModel)]="resource.date_of_joining" required></my-date-picker>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="fn">Email ID</label>
+                <div class="col-md-7">
+                    <input id="em" name="email" type="text" [(ngModel)]="resource.email" placeholder="email" class="form-control input-md">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="fn">Role</label>
+                <div class="col-md-7">
+                    <input id="ad" name="address" type="text" [(ngModel)]="resource.role" placeholder="Role" class="form-control input-md">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="dob">Designation</label>
+                <div class="col-md-7">
+                    <input id="ad" name="Designation" type="text" [(ngModel)]="resource.Designation" placeholder="Designation" class="form-control input-md">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="dob">Seat No.</label>
+                <div class="col-md-7">
+                    <input id="seat_no" name="seat_no" type="text" [(ngModel)]="resource.seat_no" placeholder="Seat No" class="form-control input-md">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="fn">Transport Availed</label>
+                <div class="col-md-7">
+                    <select class="form-control" [(ngModel)]="resource.transport_avail" name="transport_avail">
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+            </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="cntct">Vnet</label>
+                <div class="col-md-7">
+                    <input id="vnet" name="vnet" type="number" [(ngModel)]="resource.vnet" placeholder="vnet" class="form-control input-md">
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="submit-button-box mt-5">
+        <button type="submit" class="btn btn-primary" [disabled]="!workForm.dirty">Update</button>
+    </div>
+</form>

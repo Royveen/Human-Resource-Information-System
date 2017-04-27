@@ -7,13 +7,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var CanDeactivateGuard = (function () {
-    function CanDeactivateGuard() {
+var CanDeactivateFormGuard = (function () {
+    function CanDeactivateFormGuard() {
     }
-    return CanDeactivateGuard;
+    CanDeactivateFormGuard.prototype.canDeactivate = function (component, route, state) {
+        console.log("ResourceId: " + route.parent.params['id'] + " URL: " + state.url);
+        //Check with component to see if we're able to deactivate
+        return component.canDeactivate();
+    };
+    return CanDeactivateFormGuard;
 }());
-CanDeactivateGuard = __decorate([
+CanDeactivateFormGuard = __decorate([
     core_1.Injectable()
-], CanDeactivateGuard);
-exports.CanDeactivateGuard = CanDeactivateGuard;
+], CanDeactivateFormGuard);
+exports.CanDeactivateFormGuard = CanDeactivateFormGuard;
 //# sourceMappingURL=can-deactivate.guard.js.map

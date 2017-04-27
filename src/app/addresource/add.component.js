@@ -80,6 +80,7 @@ var AddComponent = (function () {
         }).then(function () {
             _this.service.loader = true;
             _this.service.addResource(_this.resDet).subscribe(function (res) {
+                console.log(res);
                 swal('success', "Saved Successfully", "success");
                 _this.service.loader = false;
             }, function (error) {

@@ -23,28 +23,65 @@ var DataService = (function () {
         this.authUrl = '/api/loginauth/';
         this.loader = false;
     }
+    DataService.prototype.getChangedProperties = function (form) {
+        var changedProperties = {};
+        Object.keys(form.controls).forEach(function (name) {
+            var currentControl = form.controls[name];
+            var controlValue = form.controls[name]["_value"];
+            if (currentControl.dirty)
+                changedProperties[name] = controlValue;
+        });
+        return changedProperties;
+    };
     DataService.prototype.getResources = function () {
-        var _this = this;
         return this.http.get(this.resourcesBaseUrl)
             .map(function (res) {
-            _this.resources = res.json();
-            return _this.resources;
+            console.log(res);
+            try {
+                return res.json();
+            }
+            catch (error) {
+                return res["_body"];
+            }
         })
             .catch(this.handleError);
     };
-    DataService.prototype.getResource = function (id) {
-        return this.http.get(this.resourcesBaseUrl + '/' + id)
-            .map(function (res) { return res.json(); })
+    DataService.prototype.getResource = function (id, filter) {
+        return this.http.get(this.resourcesBaseUrl + '/' + id + '/' + JSON.stringify(filter))
+            .map(function (res) {
+            console.log(res);
+            try {
+                return res.json();
+            }
+            catch (error) {
+                return res["_body"];
+            }
+        })
             .catch(this.handleError);
     };
     DataService.prototype.getStates = function () {
         return this.http.get('/api/states')
-            .map(function (res) { return res.json(); })
+            .map(function (res) {
+            console.log(res);
+            try {
+                return res.json();
+            }
+            catch (error) {
+                return res["_body"];
+            }
+        })
             .catch(this.handleError);
     };
     DataService.prototype.addResource = function (resource) {
         return this.http.post(this.resourcesBaseUrl + '/addroute', resource)
-            .map(function (res) { return res; })
+            .map(function (res) {
+            try {
+                return res.json();
+            }
+            catch (error) {
+                return res["_body"];
+            }
+        })
             .catch(this.handleError);
     };
     DataService.prototype.updateResource = function (id, changes) {

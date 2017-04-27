@@ -11,6 +11,8 @@ var common_1 = require("@angular/common");
 var shared_module_1 = require("../shared/shared.module");
 var dashboard_routing_1 = require("./dashboard.routing");
 var resources_routing_1 = require("../resources/resources.routing");
+var can_deactivate_guard_1 = require("../resources/can-deactivate.guard");
+var mydatepicker_1 = require("mydatepicker");
 var DashboardModule = (function () {
     function DashboardModule() {
     }
@@ -18,8 +20,9 @@ var DashboardModule = (function () {
 }());
 DashboardModule = __decorate([
     core_1.NgModule({
-        imports: [common_1.CommonModule, dashboard_routing_1.dashboardRouting.routes, shared_module_1.SharedModule],
-        declarations: [dashboard_routing_1.dashboardRouting.components, resources_routing_1.resourcesRouting.components]
+        imports: [common_1.CommonModule, dashboard_routing_1.dashboardRouting.routes, shared_module_1.SharedModule, mydatepicker_1.MyDatePickerModule],
+        declarations: [dashboard_routing_1.dashboardRouting.components, resources_routing_1.resourcesRouting.components],
+        providers: [can_deactivate_guard_1.CanDeactivateFormGuard]
     })
 ], DashboardModule);
 exports.DashboardModule = DashboardModule;

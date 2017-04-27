@@ -4,11 +4,33 @@
             <h3><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Resource Information</h3>
         </header>
         <br />
-        <div class="container">
-            <router-outlet></router-outlet>
-            <div class="mt-5">
-                <a routerLink='/dashboard/resources'>View all Resources</a>
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="alert alert-danger" *ngIf="message != null">{{ message }}</div>
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="personal" routerLinkActive="active">Personal</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="work" routerLinkActive="active">Work</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="projects" routerLinkActive="active">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="seperation" routerLinkActive="active">Seperation</a>
+                    </li>
+                </ul>
+
+                <div class="content-form mt-5">
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
+            <div class="container">
+                <div class="mt-5">
+                    <a routerLink='/dashboard/resources'>View all Resources</a>
+                </div>
             </div>
         </div>
     </div>
-</div>

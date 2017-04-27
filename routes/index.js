@@ -11,13 +11,6 @@ open('http://localhost:3000', { app: 'chrome.exe' }).then(() => {
 });
 
 
-
-/* GET home page. */
-router.get('/', function(req, res, next) {
-
-    res.render('index', { title: root_path });
-});
-
 function getModel(db, mName, schema, dbname) {
 
     var retModel;
@@ -27,26 +20,15 @@ function getModel(db, mName, schema, dbname) {
     } else {
         retModel = db.model(mName, schema, dbname);
     }
-
     return retModel;
 }
+/* GET home page. */
+router.get('/', function(req, res, next) {
+    res.render('index', { title: root_path });
+});
 
 router.post('/api/loginauth', function(req, res) {
-    // var db = req.db;
-    // var resourceModel = getModel(db, 'employeecollection', schemaRes);
 
-    // var resource1 = new resourceModel({
-    //     "firstname": "Prateek",
-    //     "lastname": "Wahi"
-    // });
-
-    // resource1.save(function(err) {
-    //     if (err) throw err;
-    //     console.log("save successfull");
-    //     resourceModel.find({}).exec(function(err, docs) {
-    //         console.log(docs);
-    //     })
-    // })
     var user = req.body.sendUser;
     var pass = req.body.sendPass;
     var authStat = {
@@ -58,11 +40,9 @@ router.post('/api/loginauth', function(req, res) {
 
 router.get('/api/resources', (req, res) => {
     var db = req.db;
-    var resourceModel = getModel(db, 'addresource', schemas.addresource, 'employeecollection');
+    var resourceModel = getModel(db, 'addresource', schemas.resource, 'employeecollection');
     resourceModel.find({}).exec(function(err, docs) {
-        if (err) {
-
-        } else {
+        if (err) {} else {
             res.json(docs);
         }
     })
@@ -71,12 +51,13 @@ router.get('/api/resources', (req, res) => {
 });
 
 
-router.get('/api/resources/:id', (req, res) => {
-
+router.get('/api/resources/:id/:filter', (req, res) => {
     let customerId = req.params.id;
     var db = req.db;
-    var resourceModel = getModel(db, 'getresource', schemas.addresource, 'employeecollection');
-    resourceModel.findById(customerId, function(err, docs) {
+    console.log(req.params);
+    var resourceModel = getModel(db, 'getresource', schemas.resource, 'employeecollection');
+    resourceModel.findById(customerId, JSON.parse(req.params.filter == 'undefined' ? '{}' : req.params.filter), function(err, docs) {
+        console.log(docs);
         if (err) {
 
         } else {
@@ -86,38 +67,28 @@ router.get('/api/resources/:id', (req, res) => {
 })
 
 router.post('/api/resources/addroute', (req, res) => {
-
-
     var db = req.db;
-    var resourceModel = getModel(db, 'addresource', schemas.addresource, 'employeecollection');
+    var resourceModel = getModel(db, 'addresource', schemas.resource, 'employeecollection');
     var resource = new resourceModel(req.body);
 
-    resource.save(function(err) {
-
+    resource.save(function(err, docs) {
+        console.log(docs);
+        console.log(err);
         if (err) {
-            res.sendStatus(500);
+            res.status(500).send("Internal Server Error");
         } else {
-            console.log("Save successfull");
-            res.sendStatus(200);
+            res.status(200).send("Save Successfully");
         }
-
-
-        // resourceModel.find({}).exec(function(err, docs) {
-        //     if (err) {
-
-        //     } else {
-
-        //     }
-        // })
     })
 });
 
-router.put('/api/resources/:id', (req, res) => {
+router.put('/api/resources/:id', function(req, res) {
+
     var db = req.db;
     var putData = req.body;
     var id = req.params.id;
-
-    var resourceModel = getModel(db, 'updateResource', schemas.addresource, 'employeecollection');
+    console.log(id);
+    var resourceModel = getModel(db, 'updateResource', schemas.resource, 'employeecollection');
     console.log(putData);
     resourceModel.update({ "_id": id }, { $set: putData }).exec((err, docs) => {
         console.log(err);

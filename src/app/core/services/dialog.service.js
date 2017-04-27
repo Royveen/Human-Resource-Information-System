@@ -10,12 +10,25 @@ var core_1 = require("@angular/core");
 var DialogService = (function () {
     function DialogService() {
     }
+    DialogService.prototype.success = function (message) {
+        swal('success', message || 'Request completed successfully', 'success');
+    };
+    DialogService.prototype.error = function (message) {
+        swal('error', message || 'Error Occurred', 'error');
+    };
     DialogService.prototype.confirm = function (message) {
         return new Promise(function (resolve) {
-            return resolve(window.confirm(message || 'Is it OK?'));
+            return resolve(swal({
+                title: '',
+                text: message || 'Is it OK?',
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes'
+            }));
         });
     };
-    ;
     return DialogService;
 }());
 DialogService = __decorate([

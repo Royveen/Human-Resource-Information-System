@@ -26,9 +26,11 @@ var ResourcesComponent = (function () {
         this.title = 'Resources Dashboard';
         this.filterText = 'Filter Resources:';
         this.displayMode = DisplayModeEnum.Card;
+        this.dataService.loader = true;
         this.dataService.getResources()
             .subscribe(function (resources) {
             _this.resources = _this.filteredCustomers = resources;
+            _this.dataService.loader = false;
         }, function (error) {
             swal('error', "The Request encountered an error, please try again after some time", "error");
             _this.dataService.loader = false;

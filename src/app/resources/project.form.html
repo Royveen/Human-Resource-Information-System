@@ -1,3 +1,179 @@
-<div class="row active" id="personal-form">
-    Project
+<div class="project-table mt-5">
+    <table class="table table-striped">
+        <thead>
+            <th>#</th>
+            <th>Project ID</th>
+            <th>Client ID</th>
+            <th>Team Group</th>
+            <th>Assignment Start Date</th>
+            <th>Assignment End Date</th>
+            <th>Allocation</th>
+            <th>Actions</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let project of projectList;let i=index;">
+                <td>{{i+1}}</td>
+                <td>{{project.project_id}}</td>
+                <td>{{project.client_id}}</td>
+                <td>{{project.team_group}}</td>
+                <td>{{project.assignment_start_date.formatted}}</td>
+                <td>{{project.assignment_end_date.formatted}}</td>
+                <td>{{(project.allocation/100) | percent}}</td>
+                <td>
+                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#projectDets" (click)="editProject(i)">
+                    Edit
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="modal fade" id="projectDets" tabindex="-1" role="dialog" aria-labelledby="projectDetsLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Project Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal clearfix" #projectForm="ngForm" id="projectForm">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group row">
+                                    <label class="col-md-4 col-form-label" for="cid">Client ID</label>
+                                    <div class="col-md-7">
+                                        <input id="cid" name="cid" type="text" [(ngModel)]="projectDet.client_id" placeholder="Client ID" class="form-control input-md">
+
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-4 col-form-label" for="tgroup">Team Group</label>
+                                    <div class="col-md-7">
+                                        <input id="tgroup" name="tgroup" type="text" [(ngModel)]="projectDet.team_group" placeholder="Team Group" class="form-control input-md">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-4 col-form-label" for="tname">Team Name</label>
+                                    <div class="col-md-7">
+                                        <input id="tname" name="tname" type="text" [(ngModel)]="projectDet.team_name" placeholder="Team Name" class="form-control input-md">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="location" class="col-sm-3 col-md-4 col-form-label">Location</label>
+                                    <div class="col-sm-6 col-md-7">
+                                        <select id="plocation" name="plocation" class="form-control" [(ngModel)]="projectDet.project_location">
+                            <option value="Gurgaon DDC5" >Gurgaon DDC5</option>
+                            <option value="Gurgaon DDC2" >Gurgaon DDC2</option>
+                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="location" class="col-sm-3 col-md-4 col-form-label">Project Country</label>
+                                    <div class="col-sm-6 col-md-7">
+                                        <select id="pcountry" name="pcountry" class="form-control" [(ngModel)]="projectDet.project_country">
+                            <option value="India">India</option>
+                            <option value="US">US</option>
+                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-4 col-form-label" for="msapid1">Manager Level 1 ID</label>
+                                    <div class="col-md-7">
+                                        <input id="msapid1" name="msapid1" type="text" placeholder="Manager 1 SAP ID" class="form-control input-md" [(ngModel)]="projectDet.manager_1_id">
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-md-4 col-form-label" for="mname1">Manager Level 1 Name</label>
+                                    <div class="col-md-7">
+                                        <input id="mname1" name="mname1" type="text" [(ngModel)]="projectDet.manager_1_name" placeholder="Manager 1 Name" class="form-control input-md">
+
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-4 col-form-label" for="msapid2">Manager Level 2 ID</label>
+                                    <div class="col-md-7">
+                                        <input id="msapid2" name="msapid2" type="text" [(ngModel)]="projectDet.manager_2_id" placeholder="Manager 2 SAP ID" class="form-control input-md">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+
+                                <div class="form-group row">
+                                    <label class="col-md-4 col-form-label" for="mname2">Manager Level 2 Name</label>
+                                    <div class="col-md-7">
+                                        <input id="mname2" name="mname2" [(ngModel)]="projectDet.manager_2_name" type="text" placeholder="Manager 2 Name" class="form-control input-md">
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-md-4 col-form-label" for="strtdate">Assignment Start Date</label>
+                                    <div class="col-md-7">
+                                        <my-date-picker name="mystartdate" [options]="myDatePickerOptions" [(ngModel)]="projectDet.assignment_start_date" required></my-date-picker>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-4 col-form-label" for="enddate">Assignment End Date</label>
+                                    <div class="col-md-7">
+                                        <my-date-picker name="myenddate" [options]="myDatePickerOptions" [(ngModel)]="projectDet.assignment_end_date" required></my-date-picker>
+
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="projects" class="col-sm-3 col-md-4 col-form-label">Project Group</label>
+                                    <div class="col-sm-6 col-md-7">
+                                        <select id="projects_group" name="projects_group" [(ngModel)]="projectDet.project_group" class="form-control">
+                                    <option value="project1" >project1</option>
+                                    <option value="project2" >project2</option>
+                                    <option value="project3" >project3</option>
+                                 </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="projects" class="col-sm-3 col-md-4 col-form-label">Project Name</label>
+                                    <div class="col-sm-6 col-md-7">
+                                        <select id="projects" name="projects" [(ngModel)]="projectDet.project_id" class="form-control">
+                                    <option value="project1">project1</option>
+                                    <option value="project1">project2</option>
+                                    <option value="project1">project3</option>
+                                 </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="rstatus" class="col-sm-3 col-md-4 col-form-label">Resource Status</label>
+                                    <div class="col-sm-6 col-md-7">
+                                        <select id="rstatus" name="rstatus" [(ngModel)]="projectDet.status_in_project" class="form-control">
+                                    <option value="Billable">Billable</option>
+                                    <option value="Buffer">Buffer</option>
+                                    <option value="Loaned">Loaned</option>
+                                    <option value="Extra">Extra</option>
+                                </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="alloc" class="col-sm-3 col-md-4 col-form-label">Allocation</label>
+                                    <div class="col-sm-6 col-md-7">
+                                        <div class="input-group">
+
+                                            <input id="alloc" name="alloc" type="range" min="1" max="100" [(ngModel)]="projectDet.allocation" class="form-control">
+                                            <span class="input-group-addon" id="basic-addon1">  {{projectDet.allocation}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" (click)="insertProject()" class="btn btn-primary">Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>

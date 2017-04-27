@@ -1,1 +1,68 @@
-Personal
+<form (ngSubmit)="onSubmit()" #personalForm="ngForm" class="personalForm editForm" novalidate>
+    <div class="row">
+        <div class="col-md-6">
+            <!-- Text input-->
+            <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="fn">First name</label>
+                <div class="col-md-7">
+                    <input id="fn" name="firstName" type="text" [(ngModel)]="resource.firstName" placeholder="First name" class="form-control input-md">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="fn">Last name</label>
+                <div class="col-md-7">
+                    <input id="ln" name="lastName" type="text" [(ngModel)]="resource.lastName" placeholder="Last name" class="form-control input-md">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="fn">Address</label>
+                <div class="col-md-7">
+                    <input id="ad" name="address" type="text" [(ngModel)]="resource.address" placeholder="Address" class="form-control input-md" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="dob">Date Of Birth</label>
+                <div class="col-md-7">
+                    <my-date-picker name="date_of_birth" [options]="myDatePickerOptions" [(ngModel)]="resource.date_of_birth" required></my-date-picker>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+
+            <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="fn">State</label>
+                <div class="col-md-7">
+                    <select class="form-control" [(ngModel)]="resource.state" name="state">
+          <option *ngFor="let st of states" [ngValue]="st.abbreviation" [selected]="resource.state === st.abbreviation">{{st.name}}</option>
+            </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="fn">Country</label>
+                <div class="col-md-7">
+                    <select class="form-control" [(ngModel)]="resource.country" name="country" required>
+                <option value="India">India</option>
+                <option value="USA">USA</option>
+                </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="cntct">Primary Contact</label>
+                <div class="col-md-7">
+                    <input id="cntct" name="contact" type="number" [(ngModel)]="resource.contact" placeholder="Contact" class="form-control input-md">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="ecntct">Emergency Contact</label>
+                <div class="col-md-7">
+                    <input id="ecntct" name="econtact" type="number" [(ngModel)]="resource.econtact" placeholder="Emergency Contact" class="form-control input-md">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="submit-button-box mt-5">
+        <button type="submit" class="btn btn-primary" [disabled]="!personalForm.dirty">Update</button>
+    </div>
+</form>

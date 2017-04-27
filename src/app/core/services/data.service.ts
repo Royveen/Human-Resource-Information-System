@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
-
+import {NgForm} from '@angular/forms';
 //Grab everything with import 'rxjs/Rx';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/throw';
@@ -20,32 +20,66 @@ export class DataService {
 
     constructor(private http: Http) { }
     
+ getChangedProperties(form:NgForm): string[] {
+  let changedProperties:any = {};
+  Object.keys(form.controls).forEach((name) => {
+    let currentControl = form.controls[name];
+    let controlValue = form.controls[name]["_value"];
+    if (currentControl.dirty)
+      changedProperties[name]=controlValue;
+  });
+
+  return changedProperties;
+}
    getResources() : Observable<IResource[]> {
        
         return this.http.get(this.resourcesBaseUrl)
                     .map((res: Response) => {
-                        this.resources = res.json();
-                       
-                        return this.resources;
-                    })
+                       console.log(res);
+                    try{
+                        return res.json();
+                    }catch(error){
+                        return res["_body"];
+                    }   
+                   })
                     .catch(this.handleError);
     }
     
-   getResource(id: string) : Observable<IResource> {
-        return this.http.get(this.resourcesBaseUrl + '/' + id)
-                    .map((res: Response) => res.json())
+   getResource(id: string,filter?:Object) : Observable<IResource> {
+        return this.http.get(this.resourcesBaseUrl + '/' + id+ '/'+ JSON.stringify(filter))
+                    .map((res: Response) => {
+                       console.log(res);
+                    try{
+                        return res.json();
+                    }catch(error){
+                        return res["_body"];
+                    }   
+                   })
                     .catch(this.handleError);
     }
 
     getStates(): Observable<IState[]> {
         return this.http.get('/api/states')
-                   .map((res: Response) => res.json())
+                   .map((res: Response) => {
+                       console.log(res);
+                    try{
+                        return res.json();
+                    }catch(error){
+                        return res["_body"];
+                    }   
+                   })
                    .catch(this.handleError); 
     }
     
     addResource(resource: IResource) : Observable<boolean> {
         return this.http.post(this.resourcesBaseUrl + '/addroute' , resource)
-                   .map((res: Response) => res)
+                   .map((res: Response) => {
+                    try{
+                        return res.json();
+                    }catch(error){
+                        return res["_body"];
+                    }   
+                   })
                    .catch(this.handleError);
     }
     updateResource(id:string,changes:Object) : Observable<string> {

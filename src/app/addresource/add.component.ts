@@ -91,6 +91,7 @@ export class AddComponent {
       this.service.loader=true;
       this.service.addResource(this.resDet).subscribe(
       (res:any)=>{
+        console.log(res);
         swal('success',"Saved Successfully","success");
          this.service.loader=false;
       },
