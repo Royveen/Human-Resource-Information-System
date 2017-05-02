@@ -8,7 +8,7 @@ import { CanDeactivateFormGuard } from '../resources/can-deactivate.guard';
 import { MyDatePickerModule } from 'mydatepicker';
 @NgModule({
   imports:      [ CommonModule, dashboardRouting.routes, SharedModule,MyDatePickerModule ],
-  declarations: [ dashboardRouting.components,resourcesRouting.components ],
+  declarations: [ dashboardRouting.components ],
   providers:[CanDeactivateFormGuard]
 })
 export class DashboardModule { 

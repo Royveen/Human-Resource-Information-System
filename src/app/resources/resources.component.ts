@@ -27,7 +27,6 @@ searchRes:string='$';
     this.title = 'Resources Dashboard';
     this.filterText = 'Filter Resources:';
     this.displayMode = DisplayModeEnum.Card;
-    this.dataService.loader=true;
     this.dataService.getResources()
         .subscribe((resources: IResource[]) => {
           this.resources = this.filteredCustomers = resources;

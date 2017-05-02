@@ -1,14 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-
+import { Router,NavigationEnd } from '@angular/router';
+import {DataService} from '../core/services/data.service'
+import 'rxjs/add/operator/filter';
 @Component({ 
   moduleId: module.id,
   selector: 'resource-info',
   templateUrl: 'resource.component.html'
 })
 export class ResourceComponent implements OnInit {
-  
-    constructor(private router: Router) { }
+    previousUrl='';
+    constructor(private router: Router, private service:DataService) {
+        this.previousUrl=service.prevUrl;
+     }
 
     ngOnInit() {
 

@@ -26,7 +26,7 @@ formLogin={
             this.loginStatus=res;
             if(res) {
                 this.authService.authUser=true;
-                this.router.navigate(['dashboard','resources']);
+                this.router.navigate(['dashboard']);
             }     
             },
       (error:any)=>{

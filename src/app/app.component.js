@@ -20,18 +20,24 @@ var AppComponent = (function () {
         this.loadingService = loadingService;
         this.router = router;
         this.titleService.setTitle('Resource Management');
-        router.events.subscribe(function (event) {
-            if (event instanceof router_2.NavigationStart) {
-            }
-            else if (event instanceof router_2.NavigationEnd) {
-            }
-            else if (event instanceof router_2.NavigationError) {
-            }
-            // NavigationEnd
-            // NavigationCancel
-            // NavigationError
-            // RoutesRecognized
+        var mySubscription = this.router.events
+            .filter(function (event) { return event instanceof router_2.NavigationEnd; })
+            .subscribe(function (e) {
+            loadingService.prevUrl = e.url;
         });
+        // router.events.subscribe(event => {
+        //   if(event instanceof NavigationStart) {
+        //   }else if(event instanceof NavigationEnd) {
+        //     console.log(event);
+        //   loadingService.prevUrl= event;
+        //   }
+        //   else if(event instanceof NavigationError) {
+        //   }
+        //   // NavigationEnd
+        //   // NavigationCancel
+        //   // NavigationError
+        //   // RoutesRecognized
+        // });
     }
     return AppComponent;
 }());

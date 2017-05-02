@@ -12,21 +12,26 @@ import { RouterModule, Routes , NavigationStart,NavigationEnd,NavigationError } 
 export class AppComponent {
   constructor(public titleService:Title, public loadingService:DataService, public router:Router){
     this.titleService.setTitle('Resource Management');
-   
-  router.events.subscribe(event => {
-    if(event instanceof NavigationStart) {
-        
-    }else if(event instanceof NavigationEnd) {
-    
-    }
-    else if(event instanceof NavigationError) {
-  
-    }
-    // NavigationEnd
-    // NavigationCancel
-    // NavigationError
-    // RoutesRecognized
+   let mySubscription = this.router.events
+  .filter(event => event instanceof NavigationEnd)
+  .subscribe(e => {
+     loadingService.prevUrl = e.url;
   });
+  // router.events.subscribe(event => {
+  //   if(event instanceof NavigationStart) {
+        
+  //   }else if(event instanceof NavigationEnd) {
+  //     console.log(event);
+  //   loadingService.prevUrl= event;
+  //   }
+  //   else if(event instanceof NavigationError) {
+  
+  //   }
+  //   // NavigationEnd
+  //   // NavigationCancel
+  //   // NavigationError
+  //   // RoutesRecognized
+  // });
 }
   }
 

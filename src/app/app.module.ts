@@ -4,6 +4,7 @@ import { AppComponent }  from './app.component';
 import { loaderComponent } from './loader.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { ResourcesModule } from './resources/resources.module';
 import { LoginModule } from './login/login.module';
 import { AddModule } from './addresource/add.module';
 import { app_routing } from './app.routing';
@@ -18,6 +19,7 @@ import { SharedModule }   from './shared/shared.module';
     SharedModule,
     app_routing,
     LoginModule,
+    ResourcesModule,
     DashboardModule,
     AddModule
   ],

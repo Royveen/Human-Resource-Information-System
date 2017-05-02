@@ -17,7 +17,7 @@ export class DataService {
     authUrl:string='/api/loginauth/'
     resources: IResource[];
     loader:boolean=false;
-
+    prevUrl:string='';
     constructor(private http: Http) { }
     
  getChangedProperties(form:NgForm): string[] {

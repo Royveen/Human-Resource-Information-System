@@ -32,7 +32,7 @@ var LoginComponent = (function () {
                 _this.loginStatus = res;
                 if (res) {
                     _this.authService.authUser = true;
-                    _this.router.navigate(['dashboard', 'resources']);
+                    _this.router.navigate(['dashboard']);
                 }
             }, function (error) {
                 swal('error', "The Request encountered an error, please try again after some time", "error");

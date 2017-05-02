@@ -12,6 +12,7 @@ var app_component_1 = require("./app.component");
 var loader_component_1 = require("./loader.component");
 var navbar_component_1 = require("./navbar/navbar.component");
 var dashboard_module_1 = require("./dashboard/dashboard.module");
+var resources_module_1 = require("./resources/resources.module");
 var login_module_1 = require("./login/login.module");
 var add_module_1 = require("./addresource/add.module");
 var app_routing_1 = require("./app.routing");
@@ -31,6 +32,7 @@ AppModule = __decorate([
             shared_module_1.SharedModule,
             app_routing_1.app_routing,
             login_module_1.LoginModule,
+            resources_module_1.ResourcesModule,
             dashboard_module_1.DashboardModule,
             add_module_1.AddModule
         ],

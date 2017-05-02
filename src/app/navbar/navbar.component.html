@@ -2,7 +2,7 @@
     <button class="navbar-toggler navbar-toggler-right hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-    <a class="navbar-brand" routerLink="/dashboard/resources">
+    <a class="navbar-brand" routerLink="/dashboard">
 
         <img src="images/people.png" alt="logo">
         <span class="app-title">Resource Management</span>
@@ -11,13 +11,10 @@
     <div class="collapse navbar-collapse ml-5" id="navbarDefault">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" routerLink="/dashboard/resources" routerLinkActive="active">Dashboard</a>
+                <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" routerLink="new" routerLinkActive="active">New Resource</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink="sos" routerLinkActive="active">Knowledge Center</a>
+                <a class="nav-link" routerLink="/new" routerLinkActive="active">New Resource</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="attritionlinks" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -28,17 +25,19 @@
                     <a class="dropdown-item" routerLink=""> Offboarding </a>
                 </div>
             </li>
-            <!--<li class="nav-item">
-                <a class="nav-link" href="#">Profile</a>
-            </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Help</a>
-            </li>-->
+                <a class="nav-link" routerLink="/sos" routerLinkActive="active">Knowledge Center</a>
+            </li>
 
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/tracker" routerLinkActive="active">Leaves Tracker</a>
+            </li>
         </ul>
         <form class="form-inline mt-2 mt-md-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <div class="input-group">
+                <input class="form-control" type="text" placeholder="Search">
+                <span class="input-group-btn"><button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button></span>
+            </div>
         </form>
     </div>
 </nav>

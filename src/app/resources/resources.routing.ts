@@ -9,7 +9,6 @@ import {SeperationComponent} from './seperation.component'
 import { CanDeactivateFormGuard } from './can-deactivate.guard'
 
 export var resourcesRoutes: Routes = [
-  { path: 'resources', component: ResourcesComponent},
   { path: 'resources/:id', component: ResourceComponent,children:[
    { path: 'personal', component: PersonalComponent ,canDeactivate: [ CanDeactivateFormGuard ]},
    { path: 'work', component: WorkComponent ,canDeactivate: [ CanDeactivateFormGuard ]},
@@ -21,5 +20,5 @@ export var resourcesRoutes: Routes = [
 
 export const resourcesRouting: IRouting = {
   routes: RouterModule.forChild(resourcesRoutes),
-  components:[ResourcesComponent,ResourceComponent,PersonalComponent,WorkComponent,ProjectComponent,SeperationComponent]
+  components:[ResourceComponent,PersonalComponent,WorkComponent,ProjectComponent,SeperationComponent]
 }

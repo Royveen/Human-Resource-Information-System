@@ -22,6 +22,7 @@ var DataService = (function () {
         this.resourcesBaseUrl = '/api/resources';
         this.authUrl = '/api/loginauth/';
         this.loader = false;
+        this.prevUrl = '';
     }
     DataService.prototype.getChangedProperties = function (form) {
         var changedProperties = {};

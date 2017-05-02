@@ -11,9 +11,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
+var data_service_1 = require("../core/services/data.service");
+require("rxjs/add/operator/filter");
 var ResourceComponent = (function () {
-    function ResourceComponent(router) {
+    function ResourceComponent(router, service) {
         this.router = router;
+        this.service = service;
+        this.previousUrl = '';
+        this.previousUrl = service.prevUrl;
     }
     ResourceComponent.prototype.ngOnInit = function () {
         //No longer needed due to routerLinkActive feature in Angular
@@ -38,7 +43,7 @@ ResourceComponent = __decorate([
         selector: 'resource-info',
         templateUrl: 'resource.component.html'
     }),
-    __metadata("design:paramtypes", [router_1.Router])
+    __metadata("design:paramtypes", [router_1.Router, data_service_1.DataService])
 ], ResourceComponent);
 exports.ResourceComponent = ResourceComponent;
 // enum CustomerDisplayModeEnum {
