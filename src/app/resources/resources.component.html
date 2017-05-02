@@ -33,10 +33,13 @@
                             <a routerLink="/resources/{{resource._id}}/personal" class=" white pull-left ">
                         {{resource.firstName | capitalize }} {{ resource.lastName | capitalize }} 
                     </a>
+
                             <a routerLink="/resources/{{resource._id}}/personal" class="pull-right">
                                 <i title="Edit" class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                 <!--<i title="Edit" class="pull-right glyphicon glyphicon-edit edit-icon white "></i>-->
                             </a>
+                            <div style="clear:both;">{{resource.country | trim}}, {{resource.state}}</div>
+
                         </div>
                         <div class="card-block ">
                             <div class="clearfix row">
@@ -47,8 +50,9 @@
                                 </div>
                                 <div class="col-md-8 offset-md-2 card-body-right ">
                                     <div class="card-body-content ">
-                                        <span>{{resource.country | trim }},</span>
-                                        <p>{{resource.state}}</p>
+                                        <p>Project</p>
+                                        <p>Team</p>
+                                        <p>Roll-Off Date</p>
                                     </div>
                                     <a routerLink="/resources/{{resource._id}}/personal">view details</a>
                                 </div>
